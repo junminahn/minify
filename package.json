@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "ncc build index.js -o dist -m --no-source-map-register"
+    "build": "ncc build index.js -o dist -m"
   },
   "repository": {
     "type": "git",
