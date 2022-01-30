@@ -1,5 +1,5 @@
 name: minify
-description: GitHub Action to minify JavaScript & CSS files
+description: GitHub Action to minify JavaScript & CSS & HTML files
 branding:
   color: blue
   icon: code

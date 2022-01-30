@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const csso = require('csso');
 const terser = require('terser');
+const html = require('html-minifier');
 const glob = require('glob');
 
 module.exports = async function run({ github, context, args }) {
@@ -12,7 +13,7 @@ module.exports = async function run({ github, context, args }) {
 
   console.log(directory);
 
-  const pattern = `${directory}**/*.{css,js}`;
+  const pattern = `${directory}**/*.{css,js,html}`;
   const options = {
     dot: true,
     ignore: ['node_modules/**/*'],
@@ -31,6 +32,9 @@ async function _minify(file) {
     return { file, result: result.code };
   } else if (extension === '.css') {
     const result = csso.minify(content).css;
+    return { file, result };
+  } else if (extension === '.html') {
+    const result = html.minify(content);
     return { file, result };
   } else {
     return { file, result: null };
