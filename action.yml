@@ -1,0 +1,20 @@
+name: minify
+description: GitHub Action to minify JavaScript & CSS files
+branding:
+  color: blue
+  icon: code
+inputs:
+  github-token:
+    description: The GitHub token used to create an authenticated client
+    default: ${{ github.token }}
+    required: false
+  directory:
+    description: Directory contains target files
+    required: true
+    default: ""
+outputs:
+  result:
+    description: The minify result, stringified with `JSON.stringify`
+runs:
+  using: node12
+  main: dist/index.js
